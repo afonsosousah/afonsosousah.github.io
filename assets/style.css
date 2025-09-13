@@ -15,12 +15,15 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     color: var(--text-light);
     margin: 0;
+    overflow-x: hidden;
+    box-sizing: border-box;
 }
 
 .align {
     max-width: 1200px;
     margin: auto;
     padding: 0 2rem;
+    box-sizing: border-box;
 }
 
 /* #region Landing */
@@ -57,9 +60,9 @@ div.landing h2 {
 
 /* #region Waves */
 
-.ocean { 
+.ocean {
     height: 5dvh;
-    width: 100dvw;
+    width: 100%;
     background: var(--secondary);
     overflow-x: clip;
     position: relative;
@@ -67,13 +70,14 @@ div.landing h2 {
   }
   
   .wave {
-    background: url('../assets/images/wave.svg') repeat-x; 
+    background: url('../assets/images/wave.svg') repeat-x;
     position: absolute;
     top: -198px;
     width: 6400px;
     height: 198px;
     animation: wave 7s cubic-bezier( 0.36, 0.45, 0.63, 0.53) infinite;
     transform: translate3d(0, 0, 0);
+    left: 0;
   }
   
   .wave:nth-of-type(2) {
@@ -109,7 +113,7 @@ div.landing h2 {
 .projects {
     background-color: var(--secondary);
     height: fit-content;
-    width: 100dvw;
+    width: 100%;
     padding: 4rem 2rem;
     box-sizing: border-box;
 }
@@ -121,12 +125,12 @@ div.landing h2 {
     row-gap: 3rem;
     justify-content: space-between;
     word-wrap: break-word;
+    align-items: stretch;
 }
 
 .card {
     background-color: var(--light-secondary);
-    width: fit-content;
-    height: fit-content;
+    width: 100%;
     color: var(--text-medium);
     padding: 2rem;
     box-sizing: border-box;
@@ -149,6 +153,10 @@ div.landing h2 {
     font-size: 1.5rem;
     font-weight: bold;
     margin-bottom: 0.5rem;
+    max-width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis
 }
 
 .card .card-text {
@@ -158,10 +166,14 @@ div.landing h2 {
 .card .card-button {
     background-color: var(--primary);
     color: var(--light-secondary);
-    padding: 1rem 2rem;
+    padding: 0.75rem 1.5rem;
     border-radius: 999px;
     align-self: flex-end;
-    margin-top: 3rem;
+    margin-top: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
 }
 
 .card-button:hover {
@@ -177,6 +189,8 @@ div.landing h2 {
 .contacts {
     background-color: var(--secondary);
     padding: 2rem;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .contacts h2 {
@@ -199,8 +213,99 @@ div.landing h2 {
     background-color: var(--primary);
     color: var(--darker-secondary);
 }
-
 /* #endregion */
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    /* Landing section adjustments */
+    div.landing {
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+        height: 50dvh;
+    }
+
+    div.landing img {
+        height: 4rem;
+        margin-bottom: 1rem;
+    }
+
+    div.landing h1 {
+        font-size: 2.5rem;
+    }
+
+    div.landing h2 {
+        font-size: 1.2rem;
+    }
+
+    /* Projects section adjustments */
+    .cards-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        max-width: 100%;
+        width: 100%;
+        margin-bottom: 2rem;
+    }
+
+    /* Font size adjustments */
+    .contacts h2 {
+        font-size: 2rem;
+    }
+
+    /* Button touch target improvements */
+    .button {
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .card .card-button {
+        min-height: 44px;
+        align-self: center;
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        padding: 0.5rem 1rem;
+        margin-top: 1.5rem;
+    }
+
+    /* Wave animation adjustment for mobile */
+    .ocean {
+        margin-top: 150px;
+    }
+
+    .wave {
+        animation: wave 5s cubic-bezier(0.36, 0.45, 0.63, 0.53) infinite;
+    }
+
+    .wave:nth-of-type(2) {
+        animation: wave 5s cubic-bezier(0.36, 0.45, 0.63, 0.53) -.125s infinite, swell 5s ease -1.25s infinite;
+    }
+
+    /* General spacing adjustments */
+    .align {
+        padding: 0 1rem;
+    }
+
+    .projects {
+        padding: 2rem 1rem;
+    }
+
+    .contacts {
+        padding: 2rem 1rem;
+    }
+
+    .footer {
+        padding: 2rem 1rem;
+        padding-top: 4rem;
+    }
+}
 
 /* #region Footer */
 
@@ -209,6 +314,8 @@ div.landing h2 {
     padding: 2rem;
     padding-top: 6rem;
     color: var(--text-medium);
+    width: 100%;
+    box-sizing: border-box;
 }
 
 .footer .align {
